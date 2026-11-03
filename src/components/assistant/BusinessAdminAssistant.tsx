@@ -203,7 +203,7 @@ export function BusinessAdminAssistant() {
   if (!open) {
     return (
       <button ref={launcherRef} className="assistant-launcher" onClick={openPanel} aria-label="Open Business Division Assistant" title="Business Division Assistant">
-        <AssistantAvatar size={48} />
+        <AssistantAvatar size={42} />
       </button>
     );
   }
