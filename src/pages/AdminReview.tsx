@@ -211,7 +211,7 @@ export function AdminReview({ session, requestKey, backLabel, onBack, onChanged 
               <SectionTitle icon="shield">Decision</SectionTitle>
               {openClarifications.length > 0 && (
                 <Alert tone="warning">
-                  You can't approve while {openClarifications.length} clarification{openClarifications.length === 1 ? ' is' : 's are'} still open. Resolve them first. You can still reject.
+                  You can't approve or reject while {openClarifications.length} clarification{openClarifications.length === 1 ? ' is' : 's are'} still open. Resolve them first.
                 </Alert>
               )}
               <label className="field spaced">
@@ -228,7 +228,7 @@ export function AdminReview({ session, requestKey, backLabel, onBack, onChanged 
                 {reasonError && <span className="field-error">{reasonError}</span>}
               </label>
               <div className="form-actions">
-                <button className="btn btn-danger-outline" onClick={() => startDecision('Rejected')} disabled={!!busy}><Icon name="x" />Reject</button>
+                <button className="btn btn-danger-outline" onClick={() => startDecision('Rejected')} disabled={!!busy || openClarifications.length > 0}><Icon name="x" />Reject</button>
                 <button className="btn btn-primary" onClick={() => startDecision('Approved')} disabled={!!busy || openClarifications.length > 0}><Icon name="check" />Approve</button>
               </div>
             </div>

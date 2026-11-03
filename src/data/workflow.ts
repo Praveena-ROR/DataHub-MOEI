@@ -756,8 +756,8 @@ export function assertReviewable(state: RequestState, decision: ReviewStatus) {
   if (reasons.length) throw new WorkflowError('locked', `This request can't be reviewed yet. ${reasons.join(' ')}`);
   if (state.overall !== 'Pending DG Admin Review') throw new WorkflowError('locked', 'This request is not awaiting DG Admin review.');
   const open = state.clarifications.filter(isOpen);
-  if (decision === 'Approved' && open.length) {
-    throw new WorkflowError('validation', `Resolve every clarification before approving. ${open.length} clarification${open.length === 1 ? ' is' : 's are'} still open.`);
+  if (open.length) {
+    throw new WorkflowError('validation', `Resolve every clarification before ${decision === 'Approved' ? 'approving' : 'rejecting'}. ${open.length} clarification${open.length === 1 ? ' is' : 's are'} still open.`);
   }
 }
 

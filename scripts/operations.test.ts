@@ -324,10 +324,16 @@ test('respond then resolve: history kept, approval blocked until resolved', asyn
   assert.equal(s.rows.find((x) => x.myapp_attributemapid === 'gas' && rowDivisionId(x) === 'bd&e')?.myapp_attributevalue, '200', 'original value preserved');
 });
 
-test('rejection is allowed with open clarifications; afterwards the clarification log is closed', async () => {
+test('rejection is blocked while clarifications are open; afterwards the clarification log is closed', async () => {
   const store = await readyStore();
   let s = await writeClarificationRequest(store, REQ, 'admin@x', 'steam', 'generation', 'Source?');
-  const c = clar(s, 'steam', 'generation')!;
+  let c = clar(s, 'steam', 'generation')!;
+  await assert.rejects(writeDecision(store, REQ, 'admin@x', 'Rejected', 'Unclear sources'), (e: WorkflowError) => e.kind === 'validation');
+  s = await writeClarificationResponse(store, REQ, GEN, 'gen@x', c.id, 'Metered', c.modifiedon);
+  c = clar(s, 'steam', 'generation')!;
+  await assert.rejects(writeDecision(store, REQ, 'admin@x', 'Rejected', 'Unclear sources'), (e: WorkflowError) => e.kind === 'validation');
+  s = await writeClarificationResolve(store, REQ, 'admin@x', c.id, c.modifiedon);
+  c = clar(s, 'steam', 'generation')!;
   s = await writeDecision(store, REQ, 'admin@x', 'Rejected', 'Unclear sources');
   assert.equal(s.overall, 'Rejected');
   await assert.rejects(writeClarificationResponse(store, REQ, GEN, 'gen@x', c.id, 'late', c.modifiedon), (e: WorkflowError) => e.kind === 'locked');

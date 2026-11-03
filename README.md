@@ -206,7 +206,7 @@ A chat panel for the published Copilot Studio agent **Business Division Assistan
 * **What it covers:**
   * **Request creation:** the request row and its Request ID, the second division refused for an attribute already in the open request, and the key refusing a second request row with the same ID.
   * **Division work:** draft visibility, separate shared values, other divisions' attributes refused, stale versions refused, blank submit refused, submit lock, and the all-divisions gate.
-  * **DG Admin review:** comments, clarification on one division's shared value, a follow-up, answers only from that division, resolve, approval blocked while open, the decision key, rejection reason required, and approval.
+  * **DG Admin review:** comments, clarification on one division's shared value, a follow-up, answers only from that division, resolve, approval and rejection blocked while open, the decision key, rejection reason required, and approval.
   * **Value key:** checks the duplicate value key once Dataverse reports it Active.
 
 ## Security
