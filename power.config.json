@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "appId": "200bf3ce-c5e8-434d-b51b-91b8f64b00af",
+  "appDisplayName": "MOEI-YearlyDatasetsIntegration",
+  "region": "prod",
+  "appType": "CodeApp",
+  "environmentId": "8df9dcac-cbda-e603-9ebc-d833fe1b181a",
+  "description": " ",
+  "buildPath": "./dist",
+  "buildEntryPoint": "index.html",
+  "localAppUrl": "http://localhost:3000",
+  "logoPath": "Default",
+  "connectionReferences": {
+    "524c3c19-1159-4847-acac-38062ed4d959": {
+      "id": "/providers/Microsoft.PowerApps/apis/shared_microsoftcopilotstudio",
+      "displayName": "Microsoft Copilot Studio",
+      "dataSources": [
+        "microsoftcopilotstudio"
+      ],
+      "authenticationType": "oauthDefault",
+      "dataSets": {}
+    }
+  },
+  "databaseReferences": {
+    "default.cds": {
+      "dataSources": {
+        "tbl_moei_datasetwithattributes": {
+          "entitySetName": "myapp_tbl_moei_datasetwithattributeses",
+          "logicalName": "myapp_tbl_moei_datasetwithattributes"
+        },
+        "tbl_moei_datasetandbusinessmaps": {
+          "entitySetName": "myapp_tbl_moei_datasetandbusinessmaps",
+          "logicalName": "myapp_tbl_moei_datasetandbusinessmap"
+        },
+        "tbl_moei_requests": {
+          "entitySetName": "myapp_tbl_moei_requests",
+          "logicalName": "myapp_tbl_moei_request"
+        },
+        "tbl_moei_userdetails": {
+          "entitySetName": "myapp_tbl_moei_userdetailses",
+          "logicalName": "myapp_tbl_moei_userdetails"
+        },
+        "tbl_moei_dgadminapprovals": {
+          "entitySetName": "myapp_tbl_moei_dgadminapprovals",
+          "logicalName": "myapp_tbl_moei_dgadminapproval"
+        },
+        "conversationtranscripts": {
+          "entitySetName": "conversationtranscripts",
+          "logicalName": "conversationtranscript",
+          "isHidden": false
+        },
+        "tbl_moei_assistantconversations": {
+          "entitySetName": "myapp_tbl_moei_assistantconversations",
+          "logicalName": "myapp_tbl_moei_assistantconversation",
+          "isHidden": false
+        }
+      },
+      "environmentVariableName": ""
+    }
+  }
+}
